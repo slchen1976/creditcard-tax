@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>所得稅分期優惠計算比較</title>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0657184848186637"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1>所得稅分期優惠計算比較</h1>
+        <p>
+          最多比較 4 種方案。每種方案輸入所得稅總額、年利率、回饋利率與分期月數，
+          系統會即時計算期末收入（不含本金）。
+        </p>
+      </header>
+
+      <section class="toolbar">
+        <button id="add-scenario-btn" type="button">新增狀況</button>
+        <button id="reset-btn" type="button" class="secondary">重設全部</button>
+      </section>
+
+      <section id="scenario-list" class="scenario-list" aria-live="polite"></section>
+
+      <section class="ad-banner" aria-label="廣告欄位">
+        <p class="ad-banner-label">Banner（AdSense）</p>
+        <div class="ad-banner-slot">
+          <!-- 將你的 Google AdSense 代碼貼在這個區塊內 -->
+          <!-- Example:
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="1234567890"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+          -->
+        </div>
+      </section>
+    </main>
+
+    <template id="scenario-template">
+      <article class="scenario-card">
+        <div class="card-header">
+          <h2 class="scenario-title"></h2>
+          <span class="best-badge" hidden>最有利</span>
+          <button class="remove-btn secondary" type="button">刪除</button>
+        </div>
+
+        <div class="input-grid">
+          <label>
+            所得稅總額
+            <input data-field="target" type="number" min="0" step="1000" />
+          </label>
+          <label>
+            年利率（%）
+            <input data-field="apr" type="number" min="0" step="0.01" />
+          </label>
+          <label>
+            回饋利率（%）
+            <input data-field="cashbackRate" type="number" min="0" step="0.01" />
+          </label>
+          <label>
+            分期月數
+            <input data-field="months" type="number" min="1" step="1" />
+          </label>
+        </div>
+
+        <dl class="result-list">
+          <div><dt>每月付款</dt><dd data-result="monthlyDeposit">-</dd></div>
+          <div><dt>利息收入</dt><dd data-result="interestEarned">-</dd></div>
+          <div><dt>回饋金額</dt><dd data-result="cashback">-</dd></div>
+          <div>
+            <dt>期末收入（淨利＋回饋）</dt>
+            <dd data-result="endIncome">-</dd>
+          </div>
+        </dl>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
